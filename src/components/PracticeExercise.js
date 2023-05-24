@@ -1,23 +1,31 @@
 import React, { useState } from "react";
 
 const PracticeExercise = ({ prompt, handleAnswer }) => {
-  const [answer, setAnswer] = useState("");
+  const [userAnswer, setUserAnswer] = useState("");
 
   const handleChange = (event) => {
-    setAnswer(event.target.value);
+    setUserAnswer(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleAnswer(answer);
+    handleAnswer(userAnswer);
+    setUserAnswer("");
   };
 
   return (
-    <div>
-      <h3>{prompt}</h3>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={answer} onChange={handleChange} />
-        <button type="submit">Submit</button>
+    <div className="practice-exercise-container">
+      <h3 className="practice-exercise-prompt">{prompt}</h3>
+      <form onSubmit={handleSubmit} className="practice-exercise-form">
+        <input
+          type="text"
+          value={userAnswer}
+          onChange={handleChange}
+          className="practice-exercise-input"
+        />
+        <button type="submit" className="practice-exercise-submit-button">
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -10,24 +10,29 @@ const Quiz = ({ question, options, handleAnswer }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleAnswer(selectedOption);
+    setSelectedOption("");
   };
 
   return (
-    <div>
-      <h3>{question}</h3>
-      <form onSubmit={handleSubmit}>
-        {options.map((option) => (
-          <label key={option}>
+    <div className="quiz-container">
+      <h3 className="quiz-question">{question}</h3>
+      <form onSubmit={handleSubmit} className="quiz-form">
+        {options.map((option, index) => (
+          <div key={index} className="quiz-option">
             <input
               type="radio"
+              id={`option-${index}`}
+              name="quiz-option"
               value={option}
               checked={selectedOption === option}
               onChange={handleChange}
             />
-            {option}
-          </label>
+            <label htmlFor={`option-${index}`}>{option}</label>
+          </div>
         ))}
-        <button type="submit">Submit</button>
+        <button type="submit" className="quiz-submit-button">
+          Submit
+        </button>
       </form>
     </div>
   );
