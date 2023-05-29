@@ -23,7 +23,7 @@ const PracticeExercise = ({ prompt, handleAnswer }) => {
           onChange={handleChange}
           className="practice-exercise-input"
         />
-        <button type="submit" className="practice-exercise-submit-button">
+        <button type="submit" className="submit-button">
           Submit
         </button>
       </form>
